@@ -152,3 +152,6 @@ drush/sites/.checksums
 
 # Chromedriver
 LICENSE.chromedriver
+
+# Drupal editor config
+/.editorconfig
