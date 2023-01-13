@@ -1,0 +1,261 @@
+/* Provide more editing space. */
+@media screen and (min-width: 61rem) {
+  .layout-region--node-main .layout-region__content,
+  .layout-region--node-footer .layout-region__content {
+    max-width: none !important;
+  }
+
+  .layout-region--node-main,
+  .layout-region--node-footer {
+    float: none !important;
+    width: 100% !important;
+    padding-right: 0 !important;
+  }
+
+  .layout-region--node-secondary {
+    float: none !important;
+    width: 100% !important;
+  }
+}
+
+@media screen and (min-width: 75rem) {
+  .layout-region--node-main,
+  .layout-region--node-footer {
+    float: left !important;
+    width: calc(100% - 22.5rem) !important;
+    padding-right: 1.5rem !important;
+  }
+
+  .layout-region--node-secondary {
+    float: right !important;
+    width: 22.5rem !important;
+  }
+}
+
+.horizontal-tabs {
+  background: #fff;
+}
+
+.horizontal-tabs-list {
+  font-size: 0.889rem;
+}
+
+.horizontal-tabs .horizontal-tab-button {
+  min-width: 0 !important;
+}
+
+.paragraphs-subform {
+  padding-right: 2.4rem;
+}
+
+.paragraphs-subform .claro-details {
+  box-sizing: border-box;
+}
+
+.paragraphs-subform .claro-details__wrapper {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.paragraphs-subform .claro-details__wrapper .claro-details__wrapper {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+.paragraph-type-label {
+  font-weight: 600;
+  font-size: 0.889rem;
+}
+
+/* Disable the table row weight drop-down. */
+.paragraphs-tabs-wrapper .tabledrag-toggle-weight-wrapper {
+  display: none;
+}
+
+/* Enlarge paragraph icons in editing view. */
+.js .paragraph-type-icon {
+  height: 39px !important;
+  width: 70px !important;
+  border: 1px solid #ccc;
+  margin-right: 5px !important;
+  padding-right: 0 !important;
+  border-right: 1px solid #ccc;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+@media screen and (min-width: 992px) {
+  .js .paragraph-type-icon {
+    height: 45px !important;
+    width: 80px !important;
+  }
+}
+
+.js .paragraph-top {
+  -ms-grid-columns: 150px auto 1fr auto !important;
+  grid-template-columns: 150px auto 1fr auto !important;
+}
+
+@media screen and (min-width: 992px) {
+  .js .paragraph-top {
+    -ms-grid-columns: 200px auto 1fr auto !important;
+    grid-template-columns: 200px auto 1fr auto !important;
+  }
+}
+
+/* Paragraph Editor Enhancements. */
+.js .paragraphs-add-dialog--categorized .paragraphs-add-dialog--categorized button.paragraphs-button--add-more,
+.ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized button.paragraphs-button--add-more {
+  min-width: 215px !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+.js .paragraphs-add-dialog--categorized .paragraphs-button--icon,
+.ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .paragraphs-button--icon {
+  height: 129px !important;
+  margin: 0 0 10px 0 !important;
+  padding: 0 !important;
+  width: 213px !important;
+}
+
+.js .paragraphs-add-dialog--categorized .paragraphs-label,
+.ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .paragraphs-label {
+  font-weight: 500 !important;
+  font-size: 0.9rem !important;
+  margin-bottom: 10px !important;
+  max-width: 100% !important;
+  padding: 0 !important;
+}
+
+.js .paragraphs-add-dialog--categorized .category-title,
+.ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .category-title {
+  font-size: 1.25rem !important;
+  font-weight: 500 !important;
+  margin-bottom: 10px;
+}
+
+.js .paragraphs-add-dialog--categorized .search-description input,
+.ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .search-description input {
+  vertical-align: middle;
+}
+
+.js .paragraphs-add-dialog--categorized .paragraphs-button--icon,
+.ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .paragraphs-button--icon {
+  border: 1px solid #ccc;
+  height: 119px !important;
+}
+
+.js .paragraphs-add-dialog--categorized .paragraphs-description,
+.ui-dialog.ui-dialog-off-canvas.paragraphs-ee-off-canvas--browser #drupal-off-canvas .paragraphs-add-dialog--categorized .paragraphs-description {
+  padding: 0 0 8px 0 !important;
+  max-height: none !important;
+}
+
+/* Change the colour of horizontal tabs. */
+.horizontal-tabs .horizontal-tabs-list,
+.horizontal-tabs .horizontal-tab-button {
+  background-color: #f3f4f9 !important;
+}
+
+.horizontal-tabs,
+.horizontal-tabs .horizontal-tabs-list {
+  border-color: #dedfe4 !important;
+}
+
+.horizontal-tab-button.selected {
+  background-color: #ffffff !important;
+}
+
+/* Improve appearance of <code> tags which are often used for field value examples in field descriptions. */
+.form-item__description code {
+  background: #e5e5e5;
+  display: inline-block;
+  margin: 2px 0;
+  padding: 2px 5px;
+  border-radius: 2px;
+  line-height: 1;
+  text-shadow: 1px 1px 0 #fff;
+  box-shadow: 0 0 0 1px #ddd;
+}
+
+/* Place input fields into columns */
+@media screen and (min-width: 992px) {
+  div.input-columns,
+  details.input-columns .details-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  div.input-columns-two,
+  details.input-columns-two .details-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  div.input-columns-three,
+  details.input-columns-three .details-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  div.input-columns-four,
+  details.input-columns-four .details-wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  .input-columns .form-text,
+  .input-columns .form-select,
+  .input-columns-two .form-text,
+  .input-columns-two .form-select,
+  .input-columns-three .form-text,
+  .input-columns-three .form-select,
+  .input-columns-four .form-text,
+  .input-columns-four .form-select {
+    width: 100%;
+  }
+
+  .input-columns .media-library-selection .media-library-item--grid,
+  .input-columns-two .media-library-selection .media-library-item--grid,
+  .input-columns-three .media-library-selection .media-library-item--grid {
+    width: 50%;
+  }
+
+  .input-columns-four .media-library-selection .media-library-item--grid {
+    width: 100%;
+  }
+}
+
+/* Improve appearance of Material Icons in the admin area. */
+i.mi-selected-icon {
+  font-size: 1.5em;
+  line-height: 48px;
+  width: 48px;
+  text-align: center;
+  box-shadow: 0 0 0 1px #ddd inset;
+  vertical-align: top;
+  color: black;
+  overflow: hidden;
+}
+
+.mi-result i {
+  font-size: 1.5em;
+  vertical-align: middle;
+  color: black;
+  margin-right: 1rem;
+}
+
+/* Make sure the "Page Actions" toolbar link has a pencil icon (from the Stable theme), even when Contextual Links module is off. */
+.toolbar-bar .toolbar-icon-edit:before {
+  background-image: url(../../../../../../core/themes/stable/images/core/icons/bebebe/pencil.svg);
+}

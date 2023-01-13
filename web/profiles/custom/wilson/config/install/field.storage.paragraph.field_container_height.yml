@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+_core:
+  default_config_hash: wIkMEjL1uhHJl_zLkdR0M6w27VhhrL1XsxYguduNgR8
+id: paragraph.field_container_height
+field_name: field_container_height
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: auto
+      label: Auto
+    -
+      value: sm
+      label: Small
+    -
+      value: md
+      label: Medium
+    -
+      value: lg
+      label: Large
+    -
+      value: full
+      label: 'Full screen height'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

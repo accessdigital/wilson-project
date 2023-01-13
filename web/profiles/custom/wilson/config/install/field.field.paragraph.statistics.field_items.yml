@@ -1,0 +1,93 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_items
+    - paragraphs.paragraphs_type.stat
+    - paragraphs.paragraphs_type.statistics
+  module:
+    - entity_reference_revisions
+id: paragraph.statistics.field_items
+field_name: field_items
+entity_type: paragraph
+bundle: statistics
+label: Statistics
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      stat: stat
+    negate: 0
+    target_bundles_drag_drop:
+      accordion:
+        weight: 23
+        enabled: false
+      block:
+        weight: 24
+        enabled: false
+      button_grid:
+        weight: 25
+        enabled: false
+      content_grid:
+        weight: 26
+        enabled: false
+      content_slider:
+        weight: 27
+        enabled: false
+      gallery:
+        weight: 28
+        enabled: false
+      hero:
+        weight: 29
+        enabled: false
+      item:
+        weight: 30
+        enabled: false
+      logo_wall:
+        weight: 31
+        enabled: false
+      map:
+        weight: 32
+        enabled: false
+      one_column:
+        weight: 33
+        enabled: false
+      panel:
+        weight: 34
+        enabled: false
+      quote:
+        weight: 35
+        enabled: false
+      simple_banner:
+        weight: 36
+        enabled: false
+      stat:
+        weight: 37
+        enabled: true
+      statistics:
+        weight: 38
+        enabled: false
+      tabs:
+        weight: 39
+        enabled: false
+      text_webform:
+        weight: 40
+        enabled: false
+      three_columns:
+        weight: 41
+        enabled: false
+      two_columns:
+        weight: 42
+        enabled: false
+      views:
+        weight: 43
+        enabled: false
+      webform_embed:
+        weight: 44
+        enabled: false
+field_type: entity_reference_revisions

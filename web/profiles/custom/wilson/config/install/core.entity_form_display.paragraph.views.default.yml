@@ -1,0 +1,228 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.views.field_aos
+    - field.field.paragraph.views.field_container_height
+    - field.field.paragraph.views.field_container_position
+    - field.field.paragraph.views.field_container_width
+    - field.field.paragraph.views.field_css_classes
+    - field.field.paragraph.views.field_id_anchor
+    - field.field.paragraph.views.field_padding_bottom
+    - field.field.paragraph.views.field_padding_top
+    - field.field.paragraph.views.field_section_bg
+    - field.field.paragraph.views.field_section_bg_colour
+    - field.field.paragraph.views.field_view
+    - paragraphs.paragraphs_type.views
+  module:
+    - field_group
+    - media_library
+    - viewsreference
+third_party_settings:
+  field_group:
+    group_tabs:
+      children:
+        - group_view
+        - group_settings
+      label: Tabs
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: tabs
+      format_settings:
+        classes: ''
+        id: ''
+        direction: horizontal
+    group_view:
+      children:
+        - field_view
+      label: View
+      region: content
+      parent_name: group_tabs
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_settings:
+      children:
+        - group_layout
+        - group_padding
+        - group_animation
+        - group_background
+        - group_classes_id
+      label: Settings
+      region: content
+      parent_name: group_tabs
+      weight: 21
+      format_type: tab
+      format_settings:
+        classes: ''
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_layout:
+      children:
+        - field_container_height
+        - field_container_width
+        - field_container_position
+      label: Layout
+      region: content
+      parent_name: group_settings
+      weight: 20
+      format_type: details
+      format_settings:
+        classes: input-columns-three
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_padding:
+      children:
+        - field_padding_top
+        - field_padding_bottom
+      label: Padding
+      region: content
+      parent_name: group_settings
+      weight: 21
+      format_type: details
+      format_settings:
+        classes: input-columns-two
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_background:
+      children:
+        - field_section_bg
+        - field_section_bg_colour
+      label: Background
+      region: content
+      parent_name: group_settings
+      weight: 23
+      format_type: details
+      format_settings:
+        classes: input-columns-two
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_classes_id:
+      children:
+        - field_css_classes
+        - field_id_anchor
+      label: 'Classes & ID'
+      region: content
+      parent_name: group_settings
+      weight: 24
+      format_type: details
+      format_settings:
+        classes: input-columns-two
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_animation:
+      children:
+        - field_aos
+      label: Animation
+      region: content
+      parent_name: group_settings
+      weight: 22
+      format_type: details
+      format_settings:
+        classes: input-columns-two
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+_core:
+  default_config_hash: 399JhTXTq35SCdQ77vxyJSUC3TLtCCMekQq76UrMua4
+id: paragraph.views.default
+targetEntityType: paragraph
+bundle: views
+mode: default
+content:
+  field_aos:
+    type: options_select
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_container_height:
+    type: options_select
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_container_position:
+    type: options_select
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_container_width:
+    type: options_select
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_css_classes:
+    type: string_textfield
+    weight: 9
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_id_anchor:
+    type: string_textfield
+    weight: 10
+    region: content
+    settings:
+      size: 60
+      placeholder: 'e.g. how-it-works'
+    third_party_settings: {  }
+  field_padding_bottom:
+    type: options_select
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_padding_top:
+    type: options_select
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_section_bg:
+    type: media_library_widget
+    weight: 22
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_section_bg_colour:
+    type: options_select
+    weight: 23
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_view:
+    type: viewsreference_select
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

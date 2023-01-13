@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text_column_3
+    - paragraphs.paragraphs_type.three_columns
+  module:
+    - text
+_core:
+  default_config_hash: oyDES1r5N2W3nBboC18H866KxwuGE6fLj7CTHQhgG0g
+id: paragraph.three_columns.field_text_column_3
+field_name: field_text_column_3
+entity_type: paragraph
+bundle: three_columns
+label: 'Text column (3)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

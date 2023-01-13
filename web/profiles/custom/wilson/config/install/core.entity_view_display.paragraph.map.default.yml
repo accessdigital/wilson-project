@@ -1,0 +1,58 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.map.field_aos
+    - field.field.paragraph.map.field_container_height
+    - field.field.paragraph.map.field_container_position
+    - field.field.paragraph.map.field_container_width
+    - field.field.paragraph.map.field_css_classes
+    - field.field.paragraph.map.field_id_anchor
+    - field.field.paragraph.map.field_map_address
+    - field.field.paragraph.map.field_map_zoom
+    - field.field.paragraph.map.field_padding_bottom
+    - field.field.paragraph.map.field_padding_top
+    - field.field.paragraph.map.field_section_bg
+    - field.field.paragraph.map.field_section_bg_colour
+    - paragraphs.paragraphs_type.map
+  module:
+    - simple_gmap
+_core:
+  default_config_hash: K-CXfcuPXnZMNTmHXBPUJaLWbFEWzyq1lENdD889rLw
+id: paragraph.map.default
+targetEntityType: paragraph
+bundle: map
+mode: default
+content:
+  field_map_address:
+    type: simple_gmap
+    label: hidden
+    settings:
+      include_map: true
+      include_static_map: false
+      include_link: false
+      include_text: false
+      iframe_height: 100%
+      iframe_width: 100%
+      iframe_title: ''
+      static_scale: 1
+      zoom_level: 14
+      link_text: 'View larger map'
+      map_type: m
+      langcode: en
+      apikey: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_aos: true
+  field_container_height: true
+  field_container_position: true
+  field_container_width: true
+  field_css_classes: true
+  field_id_anchor: true
+  field_map_zoom: true
+  field_padding_bottom: true
+  field_padding_top: true
+  field_section_bg: true
+  field_section_bg_colour: true

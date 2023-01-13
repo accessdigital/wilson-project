@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3eec6044aa69ca473a65dbc78d95e7ad",
+    "content-hash": "5dbb5ea84ac18730c7610978c21bbcb4",
     "packages": [
         {
             "name": "accessdigital/wilson",
@@ -14061,7 +14061,14 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "drupal/block_field": 5,
+        "drupal/config_split": 5,
+        "drupal/default_content": 15,
+        "drupal/rabbit_hole": 10,
+        "drupal/viewsreference": 10,
+        "drupal/webp": 10
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": [],

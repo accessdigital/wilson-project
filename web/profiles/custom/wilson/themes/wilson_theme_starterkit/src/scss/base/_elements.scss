@@ -1,0 +1,21 @@
+// Initial styles for a range of HTML elements.
+@layer base {
+  // Picture and image elements.
+  picture {
+    @apply block;
+    @apply w-full;
+
+    .image-cover & {
+      @apply h-full;
+    }
+
+    img {
+      @apply w-full;
+
+      .image-cover & {
+        @apply h-full;
+        @apply object-cover;
+      }
+    }
+  }
+}

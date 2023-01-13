@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_media_column
+    - media.type.image
+    - paragraphs.paragraphs_type.panel
+_core:
+  default_config_hash: tKvcw6Q2GXvri-F7t_kahwvi7JW7FUbXffEYic-859A
+id: paragraph.panel.field_media_column
+field_name: field_media_column
+entity_type: paragraph
+bundle: panel
+label: Image
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: true
+    auto_create_bundle: image
+field_type: entity_reference

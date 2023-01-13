@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_padding_bottom
+    - paragraphs.paragraphs_type.content_grid
+  module:
+    - options
+_core:
+  default_config_hash: 7rjnsNQw5-9MkGVfSIr18-bErJk20U0UZGbvP6DsHpQ
+id: paragraph.content_grid.field_padding_bottom
+field_name: field_padding_bottom
+entity_type: paragraph
+bundle: content_grid
+label: 'Bottom padding'
+description: 'The amount of padding to apply to the bottom of the section, pushing the next section down from the content.'
+required: true
+translatable: true
+default_value:
+  -
+    value: md
+default_value_callback: ''
+settings: {  }
+field_type: list_string

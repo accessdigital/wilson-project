@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_vertical_alignment
+    - paragraphs.paragraphs_type.three_columns
+  module:
+    - options
+_core:
+  default_config_hash: qm5xs-xWXKr5fy47LoXNvUoHI9TOGDIBINDx9ebevKc
+id: paragraph.three_columns.field_vertical_alignment
+field_name: field_vertical_alignment
+entity_type: paragraph
+bundle: three_columns
+label: 'Column vertical alignment'
+description: 'The vertical position of the columns in relationship to the longest column, on larger screen devices.'
+required: true
+translatable: true
+default_value:
+  -
+    value: top
+default_value_callback: ''
+settings: {  }
+field_type: list_string

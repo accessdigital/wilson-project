@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.footer-three
+  module:
+    - menu_block
+  theme:
+    - wilson_theme_starterkit
+id: footernavigationthree
+theme: wilson_theme_starterkit
+region: footer_col_four
+weight: 0
+provider: null
+plugin: 'menu_block:footer-three'
+settings:
+  id: 'menu_block:footer-three'
+  label: 'Footer nav three'
+  label_display: visible
+  provider: menu_block
+  follow: false
+  follow_parent: child
+  label_link: false
+  label_type: block
+  level: 1
+  depth: 0
+  expand_all_items: true
+  parent: 'footer-three:'
+  suggestion: footer_three
+visibility: {  }

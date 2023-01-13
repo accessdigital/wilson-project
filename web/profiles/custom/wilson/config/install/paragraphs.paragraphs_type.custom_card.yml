@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs_ee
+third_party_settings:
+  paragraphs_ee:
+    paragraphs_categories: {  }
+_core:
+  default_config_hash: 7l5Q3MDHVzGl_FiJwd8zCsftKHNGAOoVdZpW6nC0pmA
+id: custom_card
+label: 'Custom card'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

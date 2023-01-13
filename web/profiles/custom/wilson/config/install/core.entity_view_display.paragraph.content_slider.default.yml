@@ -1,0 +1,85 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.content_slider.field_aos
+    - field.field.paragraph.content_slider.field_cards
+    - field.field.paragraph.content_slider.field_container_height
+    - field.field.paragraph.content_slider.field_container_position
+    - field.field.paragraph.content_slider.field_container_width
+    - field.field.paragraph.content_slider.field_content_references
+    - field.field.paragraph.content_slider.field_content_slider_overflow
+    - field.field.paragraph.content_slider.field_css_classes
+    - field.field.paragraph.content_slider.field_headline
+    - field.field.paragraph.content_slider.field_id_anchor
+    - field.field.paragraph.content_slider.field_padding_bottom
+    - field.field.paragraph.content_slider.field_padding_top
+    - field.field.paragraph.content_slider.field_pre_header
+    - field.field.paragraph.content_slider.field_section_bg
+    - field.field.paragraph.content_slider.field_section_bg_colour
+    - field.field.paragraph.content_slider.field_text_column
+    - paragraphs.paragraphs_type.content_slider
+  module:
+    - entity_reference_revisions
+    - text
+_core:
+  default_config_hash: QcPFGl0NelhR9vqWuzNqhlAs3VsLkzHl4b0WknnZdr8
+id: paragraph.content_slider.default
+targetEntityType: paragraph
+bundle: content_slider
+mode: default
+content:
+  field_cards:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_content_slider_overflow:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_headline:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_pre_header:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_text_column:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  field_aos: true
+  field_container_height: true
+  field_container_position: true
+  field_container_width: true
+  field_content_references: true
+  field_css_classes: true
+  field_id_anchor: true
+  field_padding_bottom: true
+  field_padding_top: true
+  field_section_bg: true
+  field_section_bg_colour: true

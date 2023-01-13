@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_colour
+    - taxonomy.vocabulary.background_styles
+  module:
+    - color_field
+_core:
+  default_config_hash: cEktAOA_p0Mo0GZBO3WmoCCy4IjdzTwJAlpkPLJAf6g
+id: taxonomy_term.background_styles.field_colour
+field_name: field_colour
+entity_type: taxonomy_term
+bundle: background_styles
+label: 'Colour hex code'
+description: 'When used, this will inject inline background colour CSS, e.g. <code>background-color: #A1B2C3</code>.<br />It''s preferable to use CSS classes where possible. '
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  opacity: 0
+field_type: color_field_type

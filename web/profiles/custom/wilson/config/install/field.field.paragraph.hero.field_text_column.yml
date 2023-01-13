@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text_column
+    - paragraphs.paragraphs_type.hero
+  module:
+    - text
+_core:
+  default_config_hash: oWV8YtoEJKpgRGqF6gjzB-CW4woZ5aSd8erleVk6jfg
+id: paragraph.hero.field_text_column
+field_name: field_text_column
+entity_type: paragraph
+bundle: hero
+label: Text
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

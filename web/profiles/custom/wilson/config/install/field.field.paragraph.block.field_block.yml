@@ -1,0 +1,36 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_block
+    - paragraphs.paragraphs_type.block
+  module:
+    - block_field
+_core:
+  default_config_hash: 3IRfJs8KOTYgUVuPeY2WOSMrbGFzu0kXk2x3_ohZW4I
+id: paragraph.block.field_block
+field_name: field_block
+entity_type: paragraph
+bundle: block
+label: Block
+description: 'Embed a block from the Drupal Block System onto the page.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  selection: categories
+  selection_settings:
+    categories:
+      Block: Block
+      'Chaos Tools': 'Chaos Tools'
+      core: core
+      Forms: Forms
+      Help: Help
+      'Lists (Views)': 'Lists (Views)'
+      Menus: Menus
+      System: System
+      User: User
+      Webform: Webform
+      COOKiES: '0'
+field_type: block_field

@@ -1,0 +1,369 @@
+<?php
+
+/**
+ * @file
+ * Functions to support theming.
+ */
+
+use Drupal\block\Entity\Block;
+use Drupal\image\Entity\ImageStyle;
+use Drupal\Core\Render\Markup;
+use Drupal\Component\Utility\Html;
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function wilson_theme_starterkit_preprocess_page(&$variables) {
+  // Pass the site's name to the theme to be used in the copyright footer.
+  $variables['site_name'] = \Drupal::config('system.site')->get('name');
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function wilson_theme_starterkit_preprocess_node(&$variables) {
+  // Pass the site's base theme to all twig files.
+  $variables['base_path'] = base_path();
+
+  // Provide the publishing date in 'time ago' format.
+  $date = $variables['node']->getCreatedTime();
+  $variables['created_ago'] = \Drupal::service('date.formatter')->formatInterval(date('U') - $date);
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ *
+ * Pass block region value to content so this can be used in
+ * MYTHEME_theme_suggestions_menu_alter.
+ */
+function wilson_theme_starterkit_preprocess_block(&$variables) {
+  if (isset($variables['elements']['#id'])) {
+    $block = Block::load($variables['elements']['#id']);
+    if ($block) {
+      $region = Block::load($variables['elements']['#id'])->getRegion();
+      $variables['content']['#attributes']['region'] = $region;
+    }
+  }
+}
+
+/**
+ * Prepares variables for the paragraph.html.twig template.
+ */
+function wilson_theme_starterkit_preprocess_paragraph(&$variables) {
+  $paragraph = $variables['paragraph'];
+
+  // Inject CSS classes where provided in the paragraph data.
+  if ($paragraph->hasField('field_css_classes') && !$paragraph->field_css_classes->isEmpty()) {
+    $string = $paragraph->get('field_css_classes')->getString();
+    $classes = preg_split('/[\ \n\,]+/', $string);
+    $variables['attributes']['class'] = array_merge($variables['attributes']['class'] ?? [], $classes);
+  }
+
+  // Create an ID attribute on each paragraph. Useful for creating jump links.
+  $variables['attributes']['id'] = 'section-' . $variables['paragraph']->id();
+
+  // Override auto ID if one is supplied with the paragraph data.
+  if ($paragraph->hasField('field_id_anchor') && !$paragraph->field_id_anchor->isEmpty()) {
+    $string = $variables['paragraph']->get('field_id_anchor')->getString();
+    $variables['attributes']['id'] = Html::getId($string);
+  }
+
+  // Inject background colour styles/classes where supplied.
+  // TODO: Add cache tags so this updates when the colour term is updated.
+  if ($paragraph->hasField('field_section_bg_colour') && !$paragraph->field_section_bg_colour->isEmpty()) {
+    $styles = $paragraph->field_section_bg_colour->referencedEntities();
+
+    foreach ($styles as $style) {
+      if (!$style->field_colour->isEmpty()) {
+        $css = 'background-color: ' . $style->get('field_colour')->getString() . ';';
+        $variables['background_colour_style'] = $css;
+      }
+
+      if (!$style->field_css_classes->isEmpty()) {
+        $string = $style->get('field_css_classes')->getString();
+
+        if (isset($variables['background_colour_classes'])) {
+          $string = $variables['background_colour_classes'] . ' ' . $string;
+        }
+        $variables['background_colour_classes'] = $string;
+      }
+    }
+  }
+
+  // Inject background image styles where supplied. This generates inline
+  // styles to produce a responsive background image. Requires image styles
+  // with names in the format: section_bg_BREAKPOINT
+  // e.g. section_bg_fallback / section_bg_md / section_bg_lg
+  if ($paragraph->hasField('field_section_bg') && !$paragraph->field_section_bg->isEmpty()) {
+    switch($paragraph->field_section_bg->entity->bundle()) {
+      case 'image':
+        $imageUri = $paragraph->field_section_bg->entity->field_media_image->entity->uri->value;
+        $styles = _wilson_theme_starterkit_background_styles($imageUri, $variables['attributes']['id'], 'section_bg_');
+
+        if ($styles) {
+          $variables['#attached']['html_head'][] = [
+            [
+              '#tag' => 'style',
+              '#value' => $styles,
+            ], $variables['attributes']['id']
+          ];
+
+          $variables['has_bg_image'] = true;
+        }
+        break;
+      case 'remote_video':
+        $variables['has_remote_video'] = true;
+        break;
+      case 'video':
+        $variables['has_video'] = true;
+        break;
+    }
+  }
+
+  // Convert field_vertical_alignment value to a tailwind class.
+  if ($paragraph->hasField('field_vertical_alignment')) {
+    $value = $paragraph->get('field_vertical_alignment')->getString();
+    $map = [
+      'top' => 'items-start',
+      'middle' => 'items-center',
+      'bottom' => 'items-end',
+    ];
+
+    $variables['settings_vertical_alignment'] = $map[$value];
+  }
+
+  // Convert field_column_order value to a tailwind class.
+  if ($paragraph->hasField('field_column_order')) {
+    $value = $paragraph->get('field_column_order')->getString();
+    $map = [
+      'text_media' => '',
+      'media_text' => 'order-first',
+    ];
+
+    $variables['settings_media_order'] = $map[$value];
+  }
+
+  // Convert field_padding_top value to a tailwind class.
+  if ($paragraph->hasField('field_padding_top')) {
+    $value = $paragraph->get('field_padding_top')->getString();
+    $map = [
+      'none' => 'pt-0',
+      'sm' => 'pt-6 md:pt-10',
+      'md' => 'pt-12 md:pt-16',
+      'lg' => 'pt-24 md:pt-36',
+      'xl' => 'pt-36 md:pt-48',
+    ];
+
+    $variables['settings_padding_top'] = $map[$value];
+  }
+
+  // Convert field_padding_bottom value to a tailwind class.
+  if ($paragraph->hasField('field_padding_bottom')) {
+    $value = $paragraph->get('field_padding_bottom')->getString();
+    $map = [
+      'none' => 'pb-0',
+      'sm' => 'pb-6 md:pb-10',
+      'md' => 'pb-12 md:pb-16',
+      'lg' => 'pb-24 md:pb-36',
+      'xl' => 'pb-36 md:pb-48',
+    ];
+
+    $variables['settings_padding_bottom'] = $map[$value];
+  }
+
+  // Convert field_layout value to a tailwind class.
+  if ($paragraph->hasField('field_layout')) {
+    $value = $paragraph->get('field_layout')->getString();
+    $map = [
+      // Justified = a semi-flexible [two thirds] | [one third] layout.
+      'justified' => 'md:grid-cols-2-pref-l-flex md:items-center md:descendant-nav:justify-end',
+      // Center = centre aligned [two thirds] stacked
+      'center' => 'text-center descendant-nav:justify-center',
+      // Left = left aligned [two thirds] stacked
+      'left' => 'text-left',
+      // Right = right aligned [two thirds] stacked
+      'right' => 'text-right descendant-nav:justify-end',
+    ];
+
+    $variables['settings_layout'] = $map[$value];
+  }
+
+  // Convert field_grid_columns value to a tailwind class.
+  if ($paragraph->hasField('field_grid_columns')) {
+    $value = $paragraph->get('field_grid_columns')->getString();
+
+    // CSS grid classes to be added to the wrapper element when items can be
+    // laid out on a rigid grid. Responsive and non-responsive variants provide
+    // flexibility in the template.
+    $responsive = [
+      '1' => 'grid-cols-1 auto-rows-auto',
+      '2' => 'grid-cols-1 sm:grid-cols-2 auto-rows-auto',
+      '3' => 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-auto',
+      '4' => 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 auto-rows-auto',
+    ];
+    $nonResponsive = [
+      '1' => '',
+      '2' => 'grid-cols-2 auto-rows-auto',
+      '3' => 'grid-cols-3 auto-rows-auto',
+      '4' => 'grid-cols-4 auto-rows-auto',
+    ];
+
+    $variables['settings_columns'] = $responsive[$value];
+    $variables['settings_columns_non_responsive'] = $nonResponsive[$value];
+
+    // Alternatively, flexbox classes to be added to items of the grid when
+    // the items of the last row need to be centered (i.e. with the use of
+    // `align-items: center` on the wrapper element). Responsive and
+    // non-responsive variants provide flexibility in the template.
+    $responsiveColumnWidth = [
+      '1' => 'w-full',
+      '2' => 'w-full sm:w-1/2-cols',
+      '3' => 'w-full sm:w-1/2-cols lg:w-1/3-cols',
+      '4' => 'w-full sm:w-1/2-cols lg:w-1/3-cols xl:w-1/4-cols',
+    ];
+    $nonResponsiveColumnWidth = [
+      '1' => 'w-full',
+      '2' => 'w-1/2-cols',
+      '3' => 'w-1/3-cols',
+      '4' => 'w-1/4-cols',
+    ];
+
+    $variables['settings_column_width'] = $responsiveColumnWidth[$value];
+    $variables['settings_column_width_non_responsive'] = $nonResponsiveColumnWidth[$value];
+  }
+
+  // Convert field_container_height value to a tailwind class.
+  if ($paragraph->hasField('field_container_height')) {
+    $value = $paragraph->get('field_container_height')->getString();
+    $map = [
+      'auto' => '',
+      'sm' => 'min-h-1/4-screen flex items-center',
+      'md' => 'min-h-1/2-screen flex items-center',
+      'lg' => 'min-h-3/4-screen flex items-center',
+      'full' => 'min-h-screen flex items-center',
+    ];
+
+    $variables['settings_container_height'] = $map[$value];
+  }
+
+  // Convert container width and position to tailwind classes.
+  $variables['settings_container_position'] = 'container';
+  $variables['settings_inner_position'] = 'px-5';
+
+  if ($paragraph->hasField('field_container_width')) {
+    $width = $paragraph->get('field_container_width')->getString();
+    $position = 'center';
+
+    if ($paragraph->hasField('field_container_position')) {
+      $position = $paragraph->get('field_container_position')->getString();
+    }
+
+    $position_map = [
+      'left' => 'ml-0 mr-auto',
+      'center' => 'mx-auto',
+      'right' => 'ml-auto mr-0',
+    ];
+
+    switch ($width) {
+      case 'narrow':
+        $variables['settings_container_position'] = 'container';
+        $variables['settings_inner_position'] = 'md:w-8/12 lg:w-6/12 px-5 ' . $position_map[$position];
+        $variables['settings_slides_perview_2xl'] = 2;
+        $variables['settings_slides_perview_xl'] = 2;
+        $variables['settings_slides_perview_lg'] = 2;
+        $variables['settings_slides_perview_md'] = 2;
+        $variables['settings_slides_perview_sm'] = 1;
+        break;
+      case 'medium':
+        $variables['settings_container_position'] = 'container';
+        $variables['settings_inner_position'] = 'lg:w-8/12 px-5 ' . $position_map[$position];
+        $variables['settings_slides_perview_2xl'] = 2;
+        $variables['settings_slides_perview_xl'] = 2;
+        $variables['settings_slides_perview_lg'] = 2;
+        $variables['settings_slides_perview_md'] = 2;
+        $variables['settings_slides_perview_sm'] = 1;
+        break;
+      case 'normal':
+        $variables['settings_container_position'] = 'container';
+        $variables['settings_inner_position'] = 'px-5';
+        $variables['settings_slides_perview_2xl'] = 3;
+        $variables['settings_slides_perview_xl'] = 3;
+        $variables['settings_slides_perview_lg'] = 2;
+        $variables['settings_slides_perview_md'] = 2;
+        $variables['settings_slides_perview_sm'] = 1;
+        break;
+      case 'extra_wide':
+        $variables['settings_container_position'] = 'container-wide';
+        $variables['settings_inner_position'] = 'px-5';
+        $variables['settings_slides_perview_2xl'] = 4;
+        $variables['settings_slides_perview_xl'] = 3;
+        $variables['settings_slides_perview_lg'] = 2;
+        $variables['settings_slides_perview_md'] = 2;
+        $variables['settings_slides_perview_sm'] = 1;
+        break;
+      case 'full':
+        $variables['settings_container_position'] = '';
+        $variables['settings_inner_position'] = 'px-5';
+        $variables['settings_slides_perview_2xl'] = 4;
+        $variables['settings_slides_perview_xl'] = 3;
+        $variables['settings_slides_perview_lg'] = 2;
+        $variables['settings_slides_perview_md'] = 2;
+        $variables['settings_slides_perview_sm'] = 1;
+        break;
+    }
+  }
+
+  // Animate on Scroll (AOS) settings.
+  if ($paragraph->hasField('field_aos') && $paragraph->get('field_aos')->getString()) {
+    $variables['settings_container_aos'] = $paragraph->get('field_aos')->getString();
+    $variables['#attached']['library'][] = 'wilson_theme_starterkit/aos';
+  }
+}
+
+/**
+ * Implements hook_preprocess_breadcrumb().
+ */
+function wilson_theme_starterkit_preprocess_breadcrumb(&$variables) {
+  $request = \Drupal::request();
+  if ($route = $request->attributes->get(\Symfony\Cmf\Component\Routing\RouteObjectInterface::ROUTE_OBJECT)) {
+    $title = \Drupal::service('title_resolver')->getTitle($request, $route);
+  }
+
+  if ($title) {
+    $variables['breadcrumb'][] = [
+      'text' => $title,
+    ];
+  }
+}
+
+/**
+ * Helper function to add styles for a responsive background image to the
+ * document head.
+ */
+function _wilson_theme_starterkit_background_styles($imageUri, $elementId, $styleNamePrefix) {
+  // Load the Wilson breakpoints to obtain the media query selectors.
+  $breakpoints = \Drupal::service('breakpoint.manager')->getBreakpointsByGroup('wilson');
+
+  $css = false;
+  $selector = '#' . $elementId;
+
+  // Generate the initial fallback background styles.
+  $fallbackStyleName = $styleNamePrefix . 'fallback';
+  if (ImageStyle::load($fallbackStyleName)) {
+    $imageUrl = Markup::create(file_url_transform_relative(ImageStyle::load($fallbackStyleName)->buildUrl($imageUri)));
+    $css .= "$selector { background-image: url('$imageUrl'); } ";
+  }
+
+  // Generate a background style for each breakpoint (where found).
+  foreach ($breakpoints as $key => $breakpoint) {
+    $breakpointId = str_replace( 'wilson.', '', $key);
+    $imageStyleName = $styleNamePrefix . $breakpointId;
+
+    if (ImageStyle::load($imageStyleName)) {
+      $imageUrl = Markup::create(file_url_transform_relative(ImageStyle::load($imageStyleName)->buildUrl($imageUri)));
+      $css .= "@media " . $breakpoint->getMediaQuery() . " { $selector { background-image: url('$imageUrl'); }} ";
+    }
+  }
+
+  return $css;
+}

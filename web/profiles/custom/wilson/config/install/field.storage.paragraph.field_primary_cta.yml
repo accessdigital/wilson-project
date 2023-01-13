@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - link
+    - paragraphs
+_core:
+  default_config_hash: KH7VLlK7EYgwJJcZZd76eZs9vS5MW0i_mk9OZOk6Dsw
+id: paragraph.field_primary_cta
+field_name: field_primary_cta
+entity_type: paragraph
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

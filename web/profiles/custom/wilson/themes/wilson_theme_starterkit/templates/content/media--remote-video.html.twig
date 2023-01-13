@@ -1,0 +1,31 @@
+{#
+/**
+ * @file
+ * Theme override to display a remote video media item.
+ *
+ * Available variables:
+ * - name: Name of the media.
+ * - content: Media content.
+ *
+ * @see template_preprocess_media()
+ */
+#}
+{%
+  set classes = [
+  'media-video',
+  'relative',
+  'pb-[56.25%]',
+  'w-full',
+  'child:absolute',
+  'child:top-0',
+  'child:left-0',
+  'child:h-full',
+  'child:w-full',
+]
+%}
+<article{{ attributes.addClass(classes) }}>
+  {{ title_suffix.contextual_links }}
+  {% if content %}
+    {{ content }}
+  {% endif %}
+</article>

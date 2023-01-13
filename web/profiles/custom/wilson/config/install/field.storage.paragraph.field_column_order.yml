@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+_core:
+  default_config_hash: QuPERqGOmT6lLT0XdtKNY7qUgeUYC8tAEHDqLhXSS-E
+id: paragraph.field_column_order
+field_name: field_column_order
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: text_media
+      label: 'Text on the left'
+    -
+      value: media_text
+      label: 'Text on the right'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

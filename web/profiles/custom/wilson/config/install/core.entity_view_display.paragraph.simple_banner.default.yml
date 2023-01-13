@@ -1,0 +1,90 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.simple_banner.field_aos
+    - field.field.paragraph.simple_banner.field_container_height
+    - field.field.paragraph.simple_banner.field_container_position
+    - field.field.paragraph.simple_banner.field_container_width
+    - field.field.paragraph.simple_banner.field_css_classes
+    - field.field.paragraph.simple_banner.field_headline
+    - field.field.paragraph.simple_banner.field_id_anchor
+    - field.field.paragraph.simple_banner.field_layout
+    - field.field.paragraph.simple_banner.field_padding_bottom
+    - field.field.paragraph.simple_banner.field_padding_top
+    - field.field.paragraph.simple_banner.field_pre_header
+    - field.field.paragraph.simple_banner.field_primary_cta
+    - field.field.paragraph.simple_banner.field_secondary_cta
+    - field.field.paragraph.simple_banner.field_section_bg
+    - field.field.paragraph.simple_banner.field_section_bg_colour
+    - field.field.paragraph.simple_banner.field_text_column
+    - paragraphs.paragraphs_type.simple_banner
+  module:
+    - link
+    - text
+_core:
+  default_config_hash: 9_1VVMbdtEkT5u6BhqGWm8fv8rUGmCp85zhr_My1xFg
+id: paragraph.simple_banner.default
+targetEntityType: paragraph
+bundle: simple_banner
+mode: default
+content:
+  field_headline:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_pre_header:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_primary_cta:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_secondary_cta:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_text_column:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  field_aos: true
+  field_container_height: true
+  field_container_position: true
+  field_container_width: true
+  field_css_classes: true
+  field_id_anchor: true
+  field_layout: true
+  field_padding_bottom: true
+  field_padding_top: true
+  field_section_bg: true
+  field_section_bg_colour: true

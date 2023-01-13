@@ -1,0 +1,84 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.full_html
+  module:
+    - ckeditor5
+format: full_html
+editor: ckeditor5
+settings:
+  toolbar:
+    items:
+      - heading
+      - '|'
+      - bold
+      - italic
+      - strikethrough
+      - superscript
+      - subscript
+      - alignment
+      - '|'
+      - link
+      - '|'
+      - bulletedList
+      - numberedList
+      - indent
+      - outdent
+      - '|'
+      - blockQuote
+      - '-'
+      - drupalMedia
+      - insertTable
+      - horizontalLine
+      - specialCharacters
+      - materialIcons
+      - '|'
+      - style
+      - '|'
+      - undo
+      - redo
+      - removeFormat
+      - '|'
+      - codeBlock
+      - sourceEditing
+  plugins:
+    ckeditor5_heading:
+      enabled_headings:
+        - heading2
+        - heading3
+        - heading4
+        - heading5
+        - heading6
+    ckeditor5_style:
+      styles:
+        -
+          label: 'Button primary'
+          element: '<a class="btn btn--primary">'
+        -
+          label: 'Button secondary'
+          element: '<a class="btn btn--secondary">'
+        -
+          label: 'Button tertiary'
+          element: '<a class="btn btn--tertiary">'
+    ckeditor5_sourceEditing:
+      allowed_tags: {  }
+    ckeditor5_list:
+      reversed: true
+      startIndex: true
+    ckeditor5_alignment:
+      enabled_alignments:
+        - left
+        - center
+        - right
+        - justify
+    media_media:
+      allow_view_mode_override: true
+image_upload:
+  status: true
+  scheme: public
+  directory: inline-images
+  max_size: ''
+  max_dimensions:
+    width: null
+    height: null

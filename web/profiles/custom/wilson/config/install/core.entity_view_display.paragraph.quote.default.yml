@@ -1,0 +1,71 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.quote.field_aos
+    - field.field.paragraph.quote.field_author
+    - field.field.paragraph.quote.field_author_image
+    - field.field.paragraph.quote.field_author_title
+    - field.field.paragraph.quote.field_container_height
+    - field.field.paragraph.quote.field_container_position
+    - field.field.paragraph.quote.field_container_width
+    - field.field.paragraph.quote.field_css_classes
+    - field.field.paragraph.quote.field_id_anchor
+    - field.field.paragraph.quote.field_padding_bottom
+    - field.field.paragraph.quote.field_padding_top
+    - field.field.paragraph.quote.field_section_bg
+    - field.field.paragraph.quote.field_section_bg_colour
+    - field.field.paragraph.quote.field_text_column
+    - paragraphs.paragraphs_type.quote
+  module:
+    - text
+_core:
+  default_config_hash: fArw5ofZTilxTGIHDPFwOip4Of6u_EJie25C3CqVfVY
+id: paragraph.quote.default
+targetEntityType: paragraph
+bundle: quote
+mode: default
+content:
+  field_author:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_author_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: thumbnail
+      link: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_author_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_text_column:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_aos: true
+  field_container_height: true
+  field_container_position: true
+  field_container_width: true
+  field_css_classes: true
+  field_id_anchor: true
+  field_padding_bottom: true
+  field_padding_top: true
+  field_section_bg: true
+  field_section_bg_colour: true

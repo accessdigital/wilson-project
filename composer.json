@@ -1,6 +1,6 @@
 {
     "name": "accessdigital/wilson-project",
-    "description": "Project template for Wilson Drupal projects. Fork of drupal/recommended-project.",
+    "description": "Use this project with Composer to generate a Wilson Drupal codebase. This is the Wilson equivalent to running 'composer create-project drupal/recommended-project'.",
     "type": "project",
     "license": "GPL-2.0-or-later",
     "homepage": "https://www.drupal.org/project/drupal",
@@ -8,16 +8,12 @@
         "docs": "https://www.drupal.org/docs/user_guide/en/index.html",
         "chat": "https://www.drupal.org/node/314178"
     },
-    "repositories": {
-        "wilson": {
-            "type": "vcs",
-            "url": "https://github.com/accessdigital/wilson"
-        },
-        "0": {
+    "repositories": [
+        {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
         }
-    },
+    ],
     "require": {
         "accessdigital/wilson": "4.x",
         "composer/installers": "^1.9",

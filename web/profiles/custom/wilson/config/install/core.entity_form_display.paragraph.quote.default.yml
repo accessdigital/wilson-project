@@ -1,0 +1,294 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.quote.field_aos
+    - field.field.paragraph.quote.field_author
+    - field.field.paragraph.quote.field_author_image
+    - field.field.paragraph.quote.field_author_title
+    - field.field.paragraph.quote.field_container_height
+    - field.field.paragraph.quote.field_container_position
+    - field.field.paragraph.quote.field_container_width
+    - field.field.paragraph.quote.field_css_classes
+    - field.field.paragraph.quote.field_id_anchor
+    - field.field.paragraph.quote.field_padding_bottom
+    - field.field.paragraph.quote.field_padding_top
+    - field.field.paragraph.quote.field_section_bg
+    - field.field.paragraph.quote.field_section_bg_colour
+    - field.field.paragraph.quote.field_text_column
+    - paragraphs.paragraphs_type.quote
+  module:
+    - field_group
+    - media_library
+    - text
+third_party_settings:
+  field_group:
+    group_tabs:
+      children:
+        - group_quote
+        - group_author
+        - group_settings
+      label: Tabs
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: tabs
+      format_settings:
+        classes: ''
+        id: ''
+        direction: horizontal
+    group_quote:
+      children:
+        - field_text_column
+      label: Quote
+      region: content
+      parent_name: group_tabs
+      weight: 22
+      format_type: tab
+      format_settings:
+        classes: ''
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_settings:
+      children:
+        - group_layout
+        - group_padding
+        - group_animation
+        - group_background
+        - group_clas
+      label: Settings
+      region: content
+      parent_name: group_tabs
+      weight: 24
+      format_type: tab
+      format_settings:
+        classes: ''
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_layout:
+      children:
+        - field_container_height
+        - field_container_width
+        - field_container_position
+      label: Layout
+      region: content
+      parent_name: group_settings
+      weight: 22
+      format_type: details
+      format_settings:
+        classes: input-columns-three
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_padding:
+      children:
+        - field_padding_top
+        - field_padding_bottom
+      label: Padding
+      region: content
+      parent_name: group_settings
+      weight: 23
+      format_type: details
+      format_settings:
+        classes: input-columns-two
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_background:
+      children:
+        - field_section_bg
+        - field_section_bg_colour
+      label: Background
+      region: content
+      parent_name: group_settings
+      weight: 25
+      format_type: details
+      format_settings:
+        classes: input-columns-two
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_clas:
+      children:
+        - field_css_classes
+        - field_id_anchor
+      label: 'Classes & ID'
+      region: content
+      parent_name: group_settings
+      weight: 26
+      format_type: details
+      format_settings:
+        classes: input-columns-two
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_author:
+      children:
+        - group_author_name
+        - field_author_image
+      label: Author
+      region: content
+      parent_name: group_tabs
+      weight: 23
+      format_type: tab
+      format_settings:
+        classes: input-columns-two
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_author_name:
+      children:
+        - field_author
+        - field_author_title
+      label: 'Author name'
+      region: content
+      parent_name: group_author
+      weight: 7
+      format_type: html_element
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+        required_fields: true
+    group_animation:
+      children:
+        - field_aos
+      label: Animation
+      region: content
+      parent_name: group_settings
+      weight: 24
+      format_type: details
+      format_settings:
+        classes: input-columns-two
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+_core:
+  default_config_hash: t18vUi6aHzpZj-zJIgQo1hGueJYm-vZdRx3xhDd1mzU
+id: paragraph.quote.default
+targetEntityType: paragraph
+bundle: quote
+mode: default
+content:
+  field_aos:
+    type: options_select
+    weight: 33
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_author:
+    type: string_textfield
+    weight: 5
+    region: content
+    settings:
+      size: 60
+      placeholder: 'e.g. Joe Bloggs'
+    third_party_settings: {  }
+  field_author_image:
+    type: media_library_widget
+    weight: 8
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_author_title:
+    type: string_textfield
+    weight: 6
+    region: content
+    settings:
+      size: 60
+      placeholder: 'e.g. Marketing Director'
+    third_party_settings: {  }
+  field_container_height:
+    type: options_select
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_container_position:
+    type: options_select
+    weight: 32
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_container_width:
+    type: options_select
+    weight: 31
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_css_classes:
+    type: string_textfield
+    weight: 10
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_id_anchor:
+    type: string_textfield
+    weight: 11
+    region: content
+    settings:
+      size: 60
+      placeholder: '.g. how-it-works'
+    third_party_settings: {  }
+  field_padding_bottom:
+    type: options_select
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_padding_top:
+    type: options_select
+    weight: 28
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_section_bg:
+    type: media_library_widget
+    weight: 9
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_section_bg_colour:
+    type: options_select
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_text_column:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

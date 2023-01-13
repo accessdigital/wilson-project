@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_container_position
+    - paragraphs.paragraphs_type.one_column
+  module:
+    - options
+_core:
+  default_config_hash: yyC6wlRMxd_aFxqSqj1YbHZBBfMrBl9-u7RhCN5eBdQ
+id: paragraph.one_column.field_container_position
+field_name: field_container_position
+entity_type: paragraph
+bundle: one_column
+label: 'Container position'
+description: 'The alignment of the content relative to the page guides, when width is <code>Narrow</code> or <code>Medium</code>.'
+required: true
+translatable: true
+default_value:
+  -
+    value: center
+default_value_callback: ''
+settings: {  }
+field_type: list_string

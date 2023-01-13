@@ -1,0 +1,45 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.logo_wall.field_aos
+    - field.field.paragraph.logo_wall.field_container_height
+    - field.field.paragraph.logo_wall.field_container_position
+    - field.field.paragraph.logo_wall.field_container_width
+    - field.field.paragraph.logo_wall.field_css_classes
+    - field.field.paragraph.logo_wall.field_grid_columns
+    - field.field.paragraph.logo_wall.field_id_anchor
+    - field.field.paragraph.logo_wall.field_media
+    - field.field.paragraph.logo_wall.field_padding_bottom
+    - field.field.paragraph.logo_wall.field_padding_top
+    - field.field.paragraph.logo_wall.field_section_bg
+    - field.field.paragraph.logo_wall.field_section_bg_colour
+    - paragraphs.paragraphs_type.logo_wall
+_core:
+  default_config_hash: '-sIDE49AuGVkxxC0Pep2xt-XYQ_u-fG4AQgEoiKCvCM'
+id: paragraph.logo_wall.default
+targetEntityType: paragraph
+bundle: logo_wall
+mode: default
+content:
+  field_media:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_aos: true
+  field_container_height: true
+  field_container_position: true
+  field_container_width: true
+  field_css_classes: true
+  field_grid_columns: true
+  field_id_anchor: true
+  field_padding_bottom: true
+  field_padding_top: true
+  field_section_bg: true
+  field_section_bg_colour: true

@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_container_width
+    - paragraphs.paragraphs_type.content_grid
+  module:
+    - options
+_core:
+  default_config_hash: HUXCsffLHaq7nwWRPsRDyihmUAri10NlZF1lIG0vW_0
+id: paragraph.content_grid.field_container_width
+field_name: field_container_width
+entity_type: paragraph
+bundle: content_grid
+label: 'Container width'
+description: 'The width of the section content, relative to the page guides, on larger screen devices. <code>Normal</code> is default.'
+required: true
+translatable: true
+default_value:
+  -
+    value: normal
+default_value_callback: ''
+settings: {  }
+field_type: list_string

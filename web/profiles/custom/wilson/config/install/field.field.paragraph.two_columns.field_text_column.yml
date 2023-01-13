@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text_column
+    - paragraphs.paragraphs_type.two_columns
+  module:
+    - text
+_core:
+  default_config_hash: _TmkPlGNh9neBvSRj58oWk_9KKKkDLlaxJKfbxKZhzA
+id: paragraph.two_columns.field_text_column
+field_name: field_text_column
+entity_type: paragraph
+bundle: two_columns
+label: 'Text column (1)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

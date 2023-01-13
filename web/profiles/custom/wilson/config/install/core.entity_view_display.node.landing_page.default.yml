@@ -1,0 +1,38 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.landing_page.body
+    - field.field.node.landing_page.field_meta_tags
+    - field.field.node.landing_page.field_sections
+    - field.field.node.landing_page.field_teaser_caption
+    - field.field.node.landing_page.field_teaser_image
+    - field.field.node.landing_page.field_teaser_title
+    - node.type.landing_page
+  module:
+    - entity_reference_revisions
+    - user
+_core:
+  default_config_hash: 9ZMmxunHSh8ZFYq7WzUQnjpuXzsijT0bY6Z6E7JchZg
+id: node.landing_page.default
+targetEntityType: node
+bundle: landing_page
+mode: default
+content:
+  field_sections:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  body: true
+  field_meta_tags: true
+  field_teaser_caption: true
+  field_teaser_image: true
+  field_teaser_title: true
+  langcode: true
+  links: true
