@@ -15,7 +15,6 @@
         }
     ],
     "require": {
-        "accessdigital/wilson": "4.x",
         "composer/installers": "^1.9",
         "cweagans/composer-patches": "^1.7",
         "drupal/core-composer-scaffold": "^9.5",
