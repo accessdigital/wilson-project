@@ -1,8 +1,8 @@
-# Wilson Composer Project
+# Wilson Drupal Template
 
 Wilson is the **Access** in-house installation profile and theme starterkit for Drupal 9+. A development kickstarter with a focus on Paragraph-based landing pages.
 
-Use this project with Composer to generate a Wilson Drupal codebase. This is the Wilson equivalent to running `composer create-project drupal/recommended-project`.
+Use this project with Composer to generate a Wilson Drupal codebase. This is the Wilson equivalent of the `drupal/recommended-project` template.
 
 ## Installation
 
