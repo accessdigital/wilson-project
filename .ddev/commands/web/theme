@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+## Description: Run npm for the theme.
+## Usage: theme ...
+## Example: "ddev theme i" to install, "ddev theme run build" to compile CSS and JS.
+
+npm --prefix "$PWD/web/themes/custom/wilson_theme_starterkit/" "$@"
